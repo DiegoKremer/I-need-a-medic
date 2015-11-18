@@ -1,8 +1,8 @@
 <?php
-    require "dao/CategoriaDAO.php";
-    require "dao/DoencaDAO.php";
-    require "dao/EstatisticaDAO.php";
-    require "dao/SintomaDAO.php";
+require "dao/CategoriaDAO.php";
+require "dao/DoencaDAO.php";
+require "dao/EstatisticaDAO.php";
+require "dao/SintomaDAO.php";
 ?>
 
 <!DOCTYPE html>
@@ -38,6 +38,34 @@
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
+
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+        <!-- Gráfico do mapa Google Charts -->
+
+        <script type="text/javascript">
+            google.load("visualization", "1", {packages: ["geochart"]});
+            google.setOnLoadCallback(drawRegionsMap);
+
+            function drawRegionsMap() {
+
+                var data = google.visualization.arrayToDataTable([
+                    ['Country', 'Popularity'],
+                    ['Germany', 200],
+                    ['United States', 300],
+                    ['Brazil', 400],
+                    ['Canada', 500],
+                    ['France', 600],
+                    ['RU', 700]
+                ]);
+
+                var options = {};
+
+                var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+
+                chart.draw(data, options);
+            }
+        </script>
 
     </head>
 
@@ -104,8 +132,8 @@
                             <span class="input-group-addon" id="basic-addon1">Idade</span>
                             <input type="text" class="form-control" placeholder="Digite sua idade" aria-describedby="basic-addon1">
                         </div>
-                       
-                        
+
+
 
                     </div>
                 </div>
@@ -125,15 +153,24 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-6 text-center">
                         <div class="service-box">
-                        
-                        <div class="btn-group">
-                                <select name="sintoma1" class="form-control">
-                                      <?php
-                                        $sintoma1 = new SintomaDAO();
-                                        $sintoma1->visualizar("","true");
-                                      ?>
+
+                            <div class="btn-group">
+                                <h3>Sintoma</h3>
+                                <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
+                                <select name=sintoma1>
+                                    <option value=""></option>
+                                    <?php
+                                    require(".\database\conecta.inc");
+                                    conecta_bd() or die("Não é possível conectar-se ao servidor.");
+                                    $resultado = mysql_query("Select * from sintoma") or die("Não é possível consultar sintomas.");
+                                    while ($linha = mysql_fetch_array($resultado)) {
+                                        $CodigoS = $linha["codigo"];
+                                        $NomeS = $linha["nome"];
+                                        print("<option value='$CodigoS'>$NomeS</option>");
+                                    }
+                                    ?>
                                 </select>
-                            
+
                             </div>
                         </div>
                     </div>
@@ -261,8 +298,10 @@
 
         <aside class="bg-dark">
             <div class="container text-center">
+                <div id="regions_div" style="width: 900px; height: 500px;"></div>
                 <div class="call-to-action">
                     <h2>Free Download at Start Bootstrap!</h2>
+
                     <a href="#" class="btn btn-default btn-xl wow tada">Download Now!</a>
                 </div>
             </div>
