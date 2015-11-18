@@ -1,3 +1,18 @@
+CREATE DATABASE sadmbd;
+
+CREATE TABLE IF NOT EXISTS Sintoma (
+	codigo smallint(10) PRIMARY KEY AUTO_INCREMENT,
+	nome varchar(30) NOT NULL,
+	descricao varchar(140)
+)
+
+CREATE TABLE IF NOT EXISTS Categoria (
+	codigo smallint(3) PRIMARY KEY AUTO_INCREMENT,
+	nome varchar(30) NOT NULL,
+	inicio smallint(2) NOT NULL,
+	fim smallint(2) NOT NULL
+)
+
 CREATE TABLE IF NOT EXISTS Doenca (
 	codigo smallint(10) PRIMARY KEY AUTO_INCREMENT,
 	nome varchar (40) NOT NULL,
@@ -22,25 +37,13 @@ CREATE TABLE IF NOT EXISTS Doenca (
 	FOREIGN KEY (categoria) REFERENCES Categoria (codigo)
 )
 
-CREATE TABLE IF NOT EXISTS Sintoma (
-	codigo smallint(10) PRIMARY KEY AUTO_INCREMENT,
-	nome varchar(30) NOT NULL,
-	descricao varchar(140)
-)
-
-CREATE TABLE IF NOT EXISTS Categoria (
-	codigo smallint(3) PRIMARY KEY AUTO_INCREMENT,
-	nome varchar(30) NOT NULL,
-	inicio smallint(2) NOT NULL,
-	fim smallint(2) NOT NULL,
-)
 
 CREATE TABLE IF NOT EXISTS Estatistica (
 	codigo smallint(10) PRIMARY KEY AUTO_INCREMENT,
-	usuario varchar(40)
+	usuario varchar(40),
 	idade smallint(2) NOT NULL,
 	doenca smallint(10) NOT NULL,
-	FOREIGN KEY (doenca) REFERENCES Doenca (codigo)
+	FOREIGN KEY (doenca) REFERENCES Doenca (codigo),
 	sintoma_1 smallint(10) NOT NULL,
 	FOREIGN KEY (sintoma_1) REFERENCES Sintoma (codigo),
 	sintoma_2 smallint(10),
@@ -64,3 +67,5 @@ CREATE TABLE IF NOT EXISTS Estatistica (
 	dataest date,
 	hora time
 )
+
+INSERT INTO sintoma (nome, descricao) VALUES ("Febre", "Elevação da temperatura do corpo humano para cima dos limites considerados normais (36 a 37,3 °C)");

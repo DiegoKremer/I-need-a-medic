@@ -6,7 +6,7 @@ class BancoPDO {
     public $host = "localhost";
     public $usuario = "root";
     public $senha = "usbw";
-    public $banco = "projeto";
+    public $banco = "sadmbd";
 
     public $con = null;
 

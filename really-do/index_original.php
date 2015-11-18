@@ -1,6 +1,9 @@
 <?php
 
     require "dao/CategoriaDAO.php";
+    require "dao/DoencaDAO.php";
+    require "dao/EstatisticaDAO.php";
+    require "dao/SintomaDAO.php";
    
 
 ?>
@@ -128,17 +131,14 @@
                         
                         <div class="btn-group">
                             <i class="fa fa-4x fa-paper-plane wow bounceIn text-primary" data-wow-delay=".1s"></i>
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Sintoma <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Febre</a></li>
-                                <li><a href="#">Dor no peito</a></li>
-                                <li><a href="#">Náuseas</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Tontura</a></li>
-                                <li><a href="#">Cansaço</a></li>
-                            </ul>
+                            
+                                <select name="sintomas" class="form-control">
+                                      <?php
+                                        $sintoma = new SintomaDAO();
+                                        $sintoma->visualizar("","true");
+                                      ?>
+                                </select>
+                            
                             </div>
                         </div>
                     </div>
