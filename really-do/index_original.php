@@ -1,11 +1,8 @@
 <?php
-
     require "dao/CategoriaDAO.php";
     require "dao/DoencaDAO.php";
     require "dao/EstatisticaDAO.php";
     require "dao/SintomaDAO.php";
-   
-
 ?>
 
 <!DOCTYPE html>
@@ -130,12 +127,10 @@
                         <div class="service-box">
                         
                         <div class="btn-group">
-                            <i class="fa fa-4x fa-paper-plane wow bounceIn text-primary" data-wow-delay=".1s"></i>
-                            
-                                <select name="sintomas" class="form-control">
+                                <select name="sintoma1" class="form-control">
                                       <?php
-                                        $sintoma = new SintomaDAO();
-                                        $sintoma->visualizar("","true");
+                                        $sintoma1 = new SintomaDAO();
+                                        $sintoma1->visualizar("","true");
                                       ?>
                                 </select>
                             

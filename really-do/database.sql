@@ -69,3 +69,4 @@ CREATE TABLE IF NOT EXISTS Estatistica (
 )
 
 INSERT INTO sintoma (nome, descricao) VALUES ("Febre", "Elevação da temperatura do corpo humano para cima dos limites considerados normais (36 a 37,3 °C)");
+INSERT INTO sintoma (nome, descricao) VALUES ("Azia", "Sensação de ardor (queimação), que tem início na parte posterior do esterno"); 
