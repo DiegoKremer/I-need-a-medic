@@ -157,6 +157,7 @@ require "dao/SintomaDAO.php";
                             <div class="btn-group">
                                 <h3>Sintoma</h3>
                                 <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
+                                <p>
                                 <select name=sintoma1>
                                     <option value=""></option>
                                     <?php
@@ -170,7 +171,7 @@ require "dao/SintomaDAO.php";
                                     }
                                     ?>
                                 </select>
-
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -198,7 +199,77 @@ require "dao/SintomaDAO.php";
                 </div>
             </div>
         </section>
+        
+        
+        <section id="services">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="service-box">
 
+                            <div class="btn-group">
+                                <h3>Sintoma</h3>
+                                <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
+                                <p>
+                                <select name=sintoma1>
+                                    <option value=""></option>
+                                    <?php
+                                    require(".\database\conecta.inc");
+                                    conecta_bd() or die("Não é possível conectar-se ao servidor.");
+                                    $resultado = mysql_query("Select * from sintoma") or die("Não é possível consultar sintomas.");
+                                    while ($linha = mysql_fetch_array($resultado)) {
+                                        $CodigoS = $linha["codigo"];
+                                        $NomeS = $linha["nome"];
+                                        print("<option value='$CodigoS'>$NomeS</option>");
+                                    }
+                                    ?>
+                                </select>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="service-box">
+                            <i class="fa fa-4x fa-paper-plane wow bounceIn text-primary" data-wow-delay=".1s"></i>
+                            <h3>Ready to Ship</h3>
+                            <p class="text-muted">You can use this theme as is, or you can make changes!</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="service-box">
+                            <div class="btn-group">
+                                <h3>Sintoma</h3>
+                                <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
+                                <p>
+                                <select name=sintoma2>
+                                    <option value=""></option>
+                                    <?php
+                                    require(".\database\conecta.inc");
+                                    conecta_bd() or die("Não é possível conectar-se ao servidor.");
+                                    $resultado = mysql_query("Select * from sintoma") or die("Não é possível consultar sintomas.");
+                                    while ($linha = mysql_fetch_array($resultado)) {
+                                        $CodigoS = $linha["codigo"];
+                                        $NomeS = $linha["nome"];
+                                        print("<option value='$CodigoS'>$NomeS</option>");
+                                    }
+                                    ?>
+                                </select>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="service-box">
+                            <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
+                            <h3>Made with Love</h3>
+                            <p class="text-muted">You have to make your websites with love these days!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
         <section class="no-padding" id="portfolio">
             <div class="container-fluid">
                 <div class="row no-gutter">
