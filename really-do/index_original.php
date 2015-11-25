@@ -75,40 +75,7 @@
 
         }
         </script>
-
-        <!-- Gráfico do mapa Google Charts -->
-        <!--
-        <script type="text/javascript">
-            google.load("visualization", "1", {packages: ["geochart"]});
-            google.setOnLoadCallback(drawVisualization);
-
-            function drawVisualization() {
-
-                var data = new google.visualization.DataTable();
-
-                data.addColumn('number', 'Lat');
-                data.addColumn('number', 'Long');
-                data.addColumn('number', 'Value');
-                data.addColumn({type: 'string', role: 'doenca'});
-
-                data.addRows([[-30.026711, -51.228118, 223, 'Gripe']]);
-                data.addRows([[-29.382417, -50.879048, 43, 'Depressao']]);
-
-                var options = {
-                    region: 'BR',
-                    displayMode: 'markers',
-                    colorAxis: {colors: ['orange', 'red']};
-                            //backgroundColor {fill: 'black'};
-                };
-
-                var chart = new   google.visualization.GeoChart(document.getElementById('visualization'));
-
-                //google.charts.GeoChart.convertOptions(options);
-                chart.draw(data, options);
-            }
-        -->
    
-
 </head>
 
 <body id="page-top">
@@ -188,6 +155,7 @@
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Quais os seus sintomas?</h2>
                     <hr class="primary">
+                    <p>Informe ao menos um sintoma para que possamos verificar!</p>
                 </div>
             </div>
         </div>
@@ -289,7 +257,6 @@
             </div>
         </div>
     </section>
-
 
     <section id="services">
         <div class="container">
@@ -391,9 +358,10 @@
             </div>
             <div class="container text-center">
             <div class="call-to-action">
-
                 <br>
-                <a href="#" class="btn btn-default btn-xl wow tada">Verificar</a>
+                <br>
+                <br>
+                <a href="#about" class="btn btn-primary btn-xl tada">Verificar!</a>
             </div>
             </div>
         </div>
@@ -406,17 +374,8 @@
                     <h2 class="section-heading">Diagnóstico Aproximado</h2>
                     <hr class="light">
                     <p class="text-faded">Veja aqui o diagnóstico aproximado baseado em seus sintomas!</p>
-                    <div class="input-group">
-                        <span class="input-group-addon" id="basic-addon1">Nome</span>
-                        <input type="text" class="form-control" placeholder="Digite seu nome" aria-describedby="basic-addon1">
-                    </div>
-                    <div class="input-group">
-                        <span class="input-group-addon" id="basic-addon1">Idade</span>
-                        <input type="text" class="form-control" placeholder="Digite sua idade" aria-describedby="basic-addon1">
-                    </div>
-
-
-
+                    <br>
+                    <h2>REFRIADO</h2>
                 </div>
             </div>
         </div>
@@ -522,7 +481,9 @@
     -->
     <aside class="bg-dark">
         <div class="container text-center">
-            <h2>Doenças mais incidentes na sua região</h2>
+            <h2>Incidência de Doenças</h2>
+            <hr class="primary">
+            <p class="text-faded">Verifique a incidência de doenças na sua região!</p>
             <br>
             <div id="visualization" style="width: 900px; height: 500px;"></div>
             <div class="call-to-action">
