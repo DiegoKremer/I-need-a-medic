@@ -70,3 +70,13 @@ CREATE TABLE IF NOT EXISTS Estatistica (
 
 INSERT INTO sintoma (nome, descricao) VALUES ("Febre", "Elevação da temperatura do corpo humano para cima dos limites considerados normais (36 a 37,3 °C)");
 INSERT INTO sintoma (nome, descricao) VALUES ("Azia", "Sensação de ardor (queimação), que tem início na parte posterior do esterno"); 
+INSERT INTO sintoma (nome, descricao) VALUES ("Coriza", "Inflamação da mucosa nasal acompanhada eventualmente de espirros, secreção e obstrução nasal");
+INSERT INTO sintoma (nome, descricao) VALUES ("Tosse", "A tosse é uma ação que o corpo toma para se livrar das substâncias (poeiras, bactérias, vírus, fungos e outras substâncias danosas) que estão irritando as passagens de ar na faringe, laringe, traquéia ou pulmões.");
+INSERT INTO sintoma (nome, descricao) VALUES ("Cansaço", "Incapacidade muscular local para desenvolver um trabalho e sensação abrangente de falta de energia, corporal ou sistêmica");
+
+INSERT INTO categoria (nome, inicio, fim) VALUES ("Criança", 5, 12);
+INSERT INTO categoria (nome, inicio, fim) VALUES ("Adolescente", 13, 18);
+INSERT INTO categoria (nome, inicio, fim) VALUES ("Adulto", 19, 55);
+INSERT INTO categoria (nome, inicio, fim) VALUES ("Idoso", 56, 100);
+
+INSERT INTO doenca (nome, sintoma_1, sintoma_2, sintoma_3, sintoma_4, sintoma_5, sintoma_6, sintoma_6, sintoma_7, sintoma_8, genero, categoria) VALUES ("Resfriado", 3, 4, 5, null, null, null, null, null, "Ambos", 3);
