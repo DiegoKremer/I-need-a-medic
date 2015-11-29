@@ -103,7 +103,7 @@
                             <a class="page-scroll" href="#services">Sintomas</a>
                         </li>
                         <li>
-                            <a class="page-scroll" href="#about">Doenças</a>
+                            <a class="page-scroll" href="#portfolio">Doenças</a>
                         </li>
                         <li>
                             <a class="page-scroll" href="#contact">Contato</a>
@@ -168,20 +168,23 @@
                     </div>
                 </div>
             </div>
+            <form action="index_original.php" method="get">
             <div class="container">
                 <div class="row">
+                    
                     <div class="col-lg-3 col-md-6 text-center">
                         <div class="service-box">
-
+                            
                             <div class="btn-group">
                                 <h3>Sintoma</h3>
                                 <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
                                 <p>
                                     <select name=sintoma1>
-                                        <option value="Sintoma"></option>
+                                        <option value=""></option>
                                         <?php
                                         require(".\database\conecta.inc");
                                         conecta_bd() or die("Não é possível conectar-se ao servidor.");
+                                        
                                         $resultado = mysql_query("Select * from sintoma") or die("Não é possível consultar sintomas.");
                                         while ($linha = mysql_fetch_array($resultado)) {
                                             $CodigoS = $linha["codigo"];
@@ -257,11 +260,12 @@
                             </div>
                         </div>
                     </div>
+                    
                 </div>
             </div>
-        </section>
+        
 
-        <section id="services">
+        
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-md-6 text-center">
@@ -275,9 +279,9 @@
                                         <option value=""></option>
                                         <?php
                                         $resultado5 = mysql_query("Select * from sintoma") or die("Não é possível consultar sintomas.");
-                                        while ($linha5 = mysql_fetch_array($resultado)) {
-                                            $CodigoS5 = $linha["codigo"];
-                                            $NomeS5 = $linha["nome"];
+                                        while ($linha5 = mysql_fetch_array($resultado5)) {
+                                            $CodigoS5 = $linha5["codigo"];
+                                            $NomeS5 = $linha5["nome"];
                                             print("<option value='$CodigoS5'>$NomeS5</option>");
                                         }
                                         ?>
@@ -296,7 +300,7 @@
                                         <option value=""></option>
                                         <?php
                                         $resultado6 = mysql_query("Select * from sintoma") or die("Não é possível consultar sintomas.");
-                                        while ($linha = mysql_fetch_array($resultado6)) {
+                                        while ($linha6 = mysql_fetch_array($resultado6)) {
                                             $CodigoS6 = $linha6["codigo"];
                                             $NomeS6 = $linha6["nome"];
                                             print("<option value='$CodigoS6'>$NomeS6</option>");
@@ -339,7 +343,7 @@
                                         <option value=""></option>
                                         <?php
                                         $resultado8 = mysql_query("Select * from sintoma") or die("Não é possível consultar sintomas.");
-                                        while ($linha = mysql_fetch_array($resultado8)) {
+                                        while ($linha8 = mysql_fetch_array($resultado8)) {
                                             $CodigoS8 = $linha8["codigo"];
                                             $NomeS8 = $linha8["nome"];
                                             print("<option value='$CodigoS8'>$NomeS8</option>");
@@ -350,25 +354,21 @@
                             </div>
                         </div>
                     </div>
+                    
                 </div>
                 <div class="container text-center">
                     <div class="call-to-action">
                         <br>
                         <br>
                         <br>
-                        <a href="#about" class="btn btn-primary btn-xl tada">Verificar!</a>
-                        <?php
-                            $sintomad1 = mysql_query("SELECT * FROM doenca") or die ("Não é possível consultar sintomas.");
-                            while ($linhaDoenca = mysql_fetch_array($sintomad1)) {
-                                if ()
-                            }
-                        ?>
+                        <input type= "submit" value="Verificar!" href="#portfolio" class="btn btn-primary btn-xl tada"> 
                     </div>
                 </div>
             </div>
+                 </form>
         </section>
 
-        <section class="bg-primary" id="about">
+        <section class="bg-primary" id="portfolio">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2 text-center">
@@ -376,7 +376,24 @@
                         <hr class="light">
                         <p class="text-faded">Veja aqui o diagnóstico aproximado baseado em seus sintomas!</p>
                         <br>
-                        <h2>REFRIADO</h2>
+                        <h2>
+                        <?php
+                            
+                            
+                            $doenca_principal = "Insira os sintomas para pesquisarmos!";
+                            $doenca1 = mysql_query("SELECT * FROM doenca") or die ("Não é possível consultar sintomas.");
+                            while ($linhaDoenca = mysql_fetch_array($doenca1)) {
+                                $sint_combo1 = $_GET['sintoma1'];
+                                $doenca_sintoma1 = $linhaDoenca ["sintoma_1"];
+                                if ($doenca_sintoma1 == $sint_combo1) {
+                                    $doenca_principal = $linhaDoenca ["nome"];
+                                }
+                            }
+                        
+                            //Imprime o nome da doença.
+                            echo $doenca_principal;
+                        ?>
+                        </h2>
                     </div>
                 </div>
             </div>
