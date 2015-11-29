@@ -97,13 +97,16 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a class="page-scroll" href="#about">Sobre</a>
+                            <a class="page-scroll" href="#about">Você</a>
                         </li>
                         <li>
-                            <a class="page-scroll" href="#services">Sintomas</a>
+                            <a class="page-scroll" href="#sintomas">Sintomas</a>
                         </li>
                         <li>
-                            <a class="page-scroll" href="#portfolio">Doenças</a>
+                            <a class="page-scroll" href="#doencas">Diagnóstico</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="#incidencia">Incidência</a>
                         </li>
                         <li>
                             <a class="page-scroll" href="#contact">Contato</a>
@@ -158,7 +161,7 @@
             </div>
         </section>
 
-        <section id="services">
+        <section id="sintomas">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 text-center">
@@ -368,7 +371,7 @@
                  </form>
         </section>
 
-        <section class="bg-primary" id="portfolio">
+        <section class="bg-primary" id="doencas">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2 text-center">
@@ -497,7 +500,8 @@
             </div>
         </section>
         -->
-        <aside class="bg-dark">
+        <section class="bg-dark" id="incidencia">
+        
             <div class="container text-center">
                 <h2>Incidência de Doenças</h2>
                 <hr class="primary">
@@ -510,8 +514,7 @@
                     <a href="#" class="btn btn-default btn-xl wow tada">Atualizar</a>
                 </div>
             </div>
-        </aside>
-
+        </section>
         <section id="contact">
             <div class="container">
                 <div class="row">
