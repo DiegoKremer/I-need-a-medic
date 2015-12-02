@@ -4,16 +4,18 @@ require(".\database\conecta.inc");
 require("");
 
 function verificaDoenca($s1, $s2, $s3, $s4, $s5, $s6, $s7, $s8) {
-
+        
+            $sint_combo1 = $s1;
+            $sint_combo2 = $s2;
+            $sint_combo2 = $s3;
+            $sint_combo2 = $s4;
+            $sint_combo2 = $s5;
+            $sint_combo2 = $s6;
+            $sint_combo2 = $s7;
+            $sint_combo2 = $s8;
+        
     try {
-        $sint_combo1 = $s1;
-        $sint_combo2 = $s2;
-        $sint_combo2 = $s3;
-        $sint_combo2 = $s4;
-        $sint_combo2 = $s5;
-        $sint_combo2 = $s6;
-        $sint_combo2 = $s7;
-        $sint_combo2 = $s8;
+        
 
         $doenca1 = mysql_query("SELECT * FROM doenca") or die("Não é possível consultar sintomas.");
         while ($linhaDoenca = mysql_fetch_array($doenca1)) {

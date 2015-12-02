@@ -66,8 +66,6 @@
                 };
                 var chart = new google.visualization.GeoChart(document.getElementById('visualization'));
 
-
-
                 chart.draw(data, options);
 
             }
