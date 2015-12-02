@@ -127,9 +127,9 @@
         </header>
 
         <form action="index_original.php" method="get">
-            
+
             <section class="bg-primary" id="about">
-                
+
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-8 col-lg-offset-2 text-center">
@@ -153,13 +153,11 @@
                                         <button type="button" class="btn btn-default">Feminino</button>
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
                 </div>
-            
+
             </section>
 
             <section id="sintomas">
@@ -385,14 +383,20 @@
                         <br>
                         <h2>
                             <?php
-                            $sint_combo1 = "";
+                            if ($_GET['sintoma1'] == null) {
+                                $sint_combo1 = "Invalido";
+                            } else {
+                                $sint_combo1 = $_GET['sintoma1'];
+                            }
+                            
                             $doenca_principal = "Insira os sintomas para pesquisarmos!";
                             $doenca1 = mysql_query("SELECT * FROM doenca") or die("Não é possível consultar sintomas.");
                             while ($linhaDoenca = mysql_fetch_array($doenca1)) {
-                                $sint_combo1 = $_GET['sintoma1'];
                                 $doenca_sintoma1 = $linhaDoenca ["sintoma_1"];
                                 if ($doenca_sintoma1 == $sint_combo1) {
                                     $doenca_principal = $linhaDoenca ["nome"];
+                                } else {
+                                    $doenca_principal = "Doenca nao encontrada!";
                                 }
                             }
 

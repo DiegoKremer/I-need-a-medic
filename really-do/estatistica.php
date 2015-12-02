@@ -1,8 +1,21 @@
 <?php
 
 $nome = $_GET['nome'];
-$idade = $_GET['idade'];
-$doenca = $_GET['doenca_principal'];
+
+// Verifica se a idade veio null.
+if ($_GET['idade'] == null) {
+    $idade = 0;
+} else {
+    $idade = $_GET['idade'];
+}
+
+//Verifica se a doenca veio null.
+if ($_GET['doenca_principal'] == null) {
+    $doenca = "Doenca Invalida";
+} else {
+    $doenca = $_GET['doenca_principal'];
+}
+
 $sintoma1 = $_GET['sintoma1'];
 $sintoma2 = $_GET['sintoma2'];
 $sintoma3 = $_GET['sintoma3'];
@@ -14,6 +27,8 @@ $sintoma1 = $_GET['sintoma8'];
 $genero = $_GET['genero'];
 $dataest = date(d / m / Y);
 $hora = date(H - i - s);
+
+
 
 require(".\database\conecta.inc");
 conecta_bd() or die("Não é possível conectar-se ao servidor.");
