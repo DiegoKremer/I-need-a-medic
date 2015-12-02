@@ -15,7 +15,7 @@ $genero = $_GET['genero'];
 $dataest = date(d / m / Y);
 $hora = date(H - i - s);
 
-require("conecta.inc");
+require(".\database\conecta.inc");
 conecta_bd() or die("Não é possível conectar-se ao servidor.");
 mysql_query("INSERT INTO estatistica (usuario, idade, doenca, sintoma_1, sintoma_2, sintoma_3, sintoma_4, sintoma_5, sintoma_6, sintoma_7, sintoma_8"
         . "genero, dataest, hora) VALUES ('$nome', '$idade', '$doenca', '$sintoma1', '$sintoma2', '$sintoma3', '$sintoma4', '$sintoma5', '$sintoma6',"

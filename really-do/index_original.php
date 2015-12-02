@@ -414,7 +414,7 @@
                 <hr class="primary">
                 <p class="text-faded">Verifique a incidência de doenças na sua região!</p>
                 <br>
-                <div id="visualization" style="width: 900px; height: 500px;"></div>
+                <div id="visualization" style="margin-left: 15%; width: 900px; height: 500px;"></div>
                 <div class="call-to-action">
 
                     <br>
