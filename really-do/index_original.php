@@ -25,14 +25,11 @@
         <!-- Custom CSS -->
         <link rel="stylesheet" href="css/creative.css" type="text/css">
 
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
 
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+
+        <!-- Gráfico Google Charts -->
 
         <script type="text/javascript">
             google.load('visualization', '1', {'packages': ['geochart']});
@@ -129,247 +126,254 @@
             </div>
         </header>
 
-        <section class="bg-primary" id="about">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2 text-center">
-                        <h2 class="section-heading">Quem é você?</h2>
-                        <hr class="light">
-                        <p class="text-faded">Forneça as suas informações básicas para que possamos iniciar!</p>
-                        <div class="input-group">
-                            <span class="input-group-addon" id="basic-addon1">Nome</span>
-                            <input type="text" class="form-control" placeholder="Digite seu nome" aria-describedby="basic-addon1">
-                        </div>
-                        <div class="input-group">
-                            <span class="input-group-addon" id="basic-addon1">Idade</span>
-                            <input type="text" class="form-control" placeholder="Digite sua idade" aria-describedby="basic-addon1">
-                        </div>
-                        <div class="input-group">
-                            <div class="btn-group btn-group-justified" role="group" aria-label="...">
-                                <div class="btn-group" role="group">
-                                    <button type="button" class="btn btn-default">Masculino</button>
+        <form action="index_original.php" method="get">
+            
+            <section class="bg-primary" id="about">
+                
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2 text-center">
+                            <h2 class="section-heading">Quem é você?</h2>
+                            <hr class="light">
+                            <p class="text-faded">Forneça as suas informações básicas para que possamos iniciar!</p>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">Nome</span>
+                                <input type="text" class="form-control" placeholder="Digite seu nome" aria-describedby="basic-addon1" name="nome">
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon" id="basic-addon1">Idade</span>
+                                <input type="text" class="form-control" placeholder="Digite sua idade" aria-describedby="basic-addon1" name="idade">
+                            </div>
+                            <div class="input-group">
+                                <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-default">Masculino</button>
+                                    </div>
+                                    <div class="btn-group" role="group">
+                                        <button type="button" class="btn btn-default">Feminino</button>
+                                    </div>
                                 </div>
-                                <div class="btn-group" role="group">
-                                    <button type="button" class="btn btn-default">Feminino</button>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+            </section>
+
+            <section id="sintomas">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <h2 class="section-heading">Quais os seus sintomas?</h2>
+                            <hr class="primary">
+                            <p>Informe ao menos um sintoma para que possamos verificar!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-3 col-md-6 text-center">
+                            <div class="service-box">
+
+                                <div class="btn-group">
+                                    <h3>Sintoma</h3>
+                                    <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
+                                    <p>
+                                        <select name=sintoma1>
+                                            <option value=""></option>
+                                            <?php
+                                            require(".\database\conecta.inc");
+                                            conecta_bd() or die("Não é possível conectar-se ao servidor.");
+
+                                            $resultado = mysql_query("Select * from sintoma") or die("Não é possível consultar sintomas.");
+                                            while ($linha = mysql_fetch_array($resultado)) {
+                                                $CodigoS = $linha["codigo"];
+                                                $NomeS = $linha["nome"];
+                                                print("<option value='$CodigoS'>$NomeS</option>");
+                                            }
+                                            ?>
+                                        </select>
+                                    </p>
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 text-center">
+                            <div class="service-box">
+                                <div class="btn-group">
+                                    <h3>Sintoma</h3>
+                                    <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
+                                    <p>
+                                        <select name=sintoma2>
+                                            <option value=""></option>
+                                            <?php
+                                            $resultado2 = mysql_query("Select * from sintoma") or die("Não é possível consultar sintomas.");
+                                            while ($linha2 = mysql_fetch_array($resultado2)) {
+                                                $CodigoS2 = $linha2["codigo"];
+                                                $NomeS2 = $linha2["nome"];
+                                                print("<option value='$CodigoS2'>$NomeS2</option>");
+                                            }
+                                            ?>
+                                        </select>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 text-center">
+                            <div class="service-box">
+                                <div class="btn-group">
+                                    <h3>Sintoma</h3>
+                                    <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
+                                    <p>
+                                        <select name=sintoma3>
+                                            <option value=""></option>
+                                            <?php
+                                            $resultado3 = mysql_query("Select * from sintoma") or die("Não é possível consultar sintomas.");
+                                            while ($linha3 = mysql_fetch_array($resultado3)) {
+                                                $CodigoS3 = $linha3["codigo"];
+                                                $NomeS3 = $linha3["nome"];
+                                                print("<option value='$CodigoS3'>$NomeS3</option>");
+                                            }
+                                            ?>
+                                        </select>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 text-center">
+                            <div class="service-box">
+                                <div class="btn-group">
+                                    <h3>Sintoma</h3>
+                                    <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
+                                    <p>
+                                        <select name=sintoma4>
+                                            <option value=""></option>
+                                            <?php
+                                            $resultado4 = mysql_query("Select * from sintoma") or die("Não é possível consultar sintomas.");
+                                            while ($linha4 = mysql_fetch_array($resultado4)) {
+                                                $CodigoS4 = $linha4["codigo"];
+                                                $NomeS4 = $linha4["nome"];
+                                                print("<option value='$CodigoS4'>$NomeS4</option>");
+                                            }
+                                            ?>
+                                        </select>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
 
 
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6 text-center">
+                            <div class="service-box">
+
+                                <div class="btn-group">
+                                    <h3>Sintoma</h3>
+                                    <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
+                                    <p>
+                                        <select name=sintoma5>
+                                            <option value=""></option>
+                                            <?php
+                                            $resultado5 = mysql_query("Select * from sintoma") or die("Não é possível consultar sintomas.");
+                                            while ($linha5 = mysql_fetch_array($resultado5)) {
+                                                $CodigoS5 = $linha5["codigo"];
+                                                $NomeS5 = $linha5["nome"];
+                                                print("<option value='$CodigoS5'>$NomeS5</option>");
+                                            }
+                                            ?>
+                                        </select>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 text-center">
+                            <div class="service-box">
+                                <div class="btn-group">
+                                    <h3>Sintoma</h3>
+                                    <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
+                                    <p>
+                                        <select name=sintoma6>
+                                            <option value=""></option>
+                                            <?php
+                                            $resultado6 = mysql_query("Select * from sintoma") or die("Não é possível consultar sintomas.");
+                                            while ($linha6 = mysql_fetch_array($resultado6)) {
+                                                $CodigoS6 = $linha6["codigo"];
+                                                $NomeS6 = $linha6["nome"];
+                                                print("<option value='$CodigoS6'>$NomeS6</option>");
+                                            }
+                                            ?>
+                                        </select>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 text-center">
+                            <div class="service-box">
+                                <div class="btn-group">
+                                    <h3>Sintoma</h3>
+                                    <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
+                                    <p>
+                                        <select name=sintoma7>
+                                            <option value=""></option>
+                                            <?php
+                                            $resultado7 = mysql_query("Select * from sintoma") or die("Não é possível consultar sintomas.");
+                                            while ($linha7 = mysql_fetch_array($resultado7)) {
+                                                $CodigoS7 = $linha7["codigo"];
+                                                $NomeS7 = $linha7["nome"];
+                                                print("<option value='$CodigoS7'>$NomeS7</option>");
+                                            }
+                                            ?>
+                                        </select>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 text-center">
+                            <div class="service-box">
+                                <div class="btn-group">
+                                    <h3>Sintoma</h3>
+                                    <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
+                                    <p>
+                                        <select name=sintoma8>
+                                            <option value=""></option>
+                                            <?php
+                                            $resultado8 = mysql_query("Select * from sintoma") or die("Não é possível consultar sintomas.");
+                                            while ($linha8 = mysql_fetch_array($resultado8)) {
+                                                $CodigoS8 = $linha8["codigo"];
+                                                $NomeS8 = $linha8["nome"];
+                                                print("<option value='$CodigoS8'>$NomeS8</option>");
+                                            }
+                                            ?>
+                                        </select>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="container text-center">
+                        <div class="call-to-action">
+                            <br>
+                            <br>
+                            <br>
+                            <input type= "submit" value="Verificar!" href="#doencas" class="btn btn-primary btn-xl tada"> 
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <section id="sintomas">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <h2 class="section-heading">Quais os seus sintomas?</h2>
-                        <hr class="primary">
-                        <p>Informe ao menos um sintoma para que possamos verificar!</p>
-                    </div>
-                </div>
-            </div>
-            <form action="index_original.php" method="get">
-            <div class="container">
-                <div class="row">
-                    
-                    <div class="col-lg-3 col-md-6 text-center">
-                        <div class="service-box">
-                            
-                            <div class="btn-group">
-                                <h3>Sintoma</h3>
-                                <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
-                                <p>
-                                    <select name=sintoma1>
-                                        <option value=""></option>
-                                        <?php
-                                        require(".\database\conecta.inc");
-                                        conecta_bd() or die("Não é possível conectar-se ao servidor.");
-                                        
-                                        $resultado = mysql_query("Select * from sintoma") or die("Não é possível consultar sintomas.");
-                                        while ($linha = mysql_fetch_array($resultado)) {
-                                            $CodigoS = $linha["codigo"];
-                                            $NomeS = $linha["nome"];
-                                            print("<option value='$CodigoS'>$NomeS</option>");
-                                        }
-                                        ?>
-                                    </select>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 text-center">
-                        <div class="service-box">
-                            <div class="btn-group">
-                                <h3>Sintoma</h3>
-                                <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
-                                <p>
-                                    <select name=sintoma2>
-                                        <option value=""></option>
-                                        <?php
-                                        $resultado2 = mysql_query("Select * from sintoma") or die("Não é possível consultar sintomas.");
-                                        while ($linha2 = mysql_fetch_array($resultado2)) {
-                                            $CodigoS2 = $linha2["codigo"];
-                                            $NomeS2 = $linha2["nome"];
-                                            print("<option value='$CodigoS2'>$NomeS2</option>");
-                                        }
-                                        ?>
-                                    </select>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 text-center">
-                        <div class="service-box">
-                            <div class="btn-group">
-                                <h3>Sintoma</h3>
-                                <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
-                                <p>
-                                    <select name=sintoma3>
-                                        <option value=""></option>
-                                        <?php
-                                        $resultado3 = mysql_query("Select * from sintoma") or die("Não é possível consultar sintomas.");
-                                        while ($linha3 = mysql_fetch_array($resultado3)) {
-                                            $CodigoS3 = $linha3["codigo"];
-                                            $NomeS3 = $linha3["nome"];
-                                            print("<option value='$CodigoS3'>$NomeS3</option>");
-                                        }
-                                        ?>
-                                    </select>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 text-center">
-                        <div class="service-box">
-                            <div class="btn-group">
-                                <h3>Sintoma</h3>
-                                <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
-                                <p>
-                                    <select name=sintoma4>
-                                        <option value=""></option>
-                                        <?php
-                                        $resultado4 = mysql_query("Select * from sintoma") or die("Não é possível consultar sintomas.");
-                                        while ($linha4 = mysql_fetch_array($resultado4)) {
-                                            $CodigoS4 = $linha4["codigo"];
-                                            $NomeS4 = $linha4["nome"];
-                                            print("<option value='$CodigoS4'>$NomeS4</option>");
-                                        }
-                                        ?>
-                                    </select>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-        
+            </section>
+        </form>
 
-        
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 text-center">
-                        <div class="service-box">
-
-                            <div class="btn-group">
-                                <h3>Sintoma</h3>
-                                <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
-                                <p>
-                                    <select name=sintoma5>
-                                        <option value=""></option>
-                                        <?php
-                                        $resultado5 = mysql_query("Select * from sintoma") or die("Não é possível consultar sintomas.");
-                                        while ($linha5 = mysql_fetch_array($resultado5)) {
-                                            $CodigoS5 = $linha5["codigo"];
-                                            $NomeS5 = $linha5["nome"];
-                                            print("<option value='$CodigoS5'>$NomeS5</option>");
-                                        }
-                                        ?>
-                                    </select>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 text-center">
-                        <div class="service-box">
-                            <div class="btn-group">
-                                <h3>Sintoma</h3>
-                                <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
-                                <p>
-                                    <select name=sintoma6>
-                                        <option value=""></option>
-                                        <?php
-                                        $resultado6 = mysql_query("Select * from sintoma") or die("Não é possível consultar sintomas.");
-                                        while ($linha6 = mysql_fetch_array($resultado6)) {
-                                            $CodigoS6 = $linha6["codigo"];
-                                            $NomeS6 = $linha6["nome"];
-                                            print("<option value='$CodigoS6'>$NomeS6</option>");
-                                        }
-                                        ?>
-                                    </select>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 text-center">
-                        <div class="service-box">
-                            <div class="btn-group">
-                                <h3>Sintoma</h3>
-                                <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
-                                <p>
-                                    <select name=sintoma7>
-                                        <option value=""></option>
-                                        <?php
-                                        $resultado7 = mysql_query("Select * from sintoma") or die("Não é possível consultar sintomas.");
-                                        while ($linha7 = mysql_fetch_array($resultado7)) {
-                                            $CodigoS7 = $linha7["codigo"];
-                                            $NomeS7 = $linha7["nome"];
-                                            print("<option value='$CodigoS7'>$NomeS7</option>");
-                                        }
-                                        ?>
-                                    </select>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 text-center">
-                        <div class="service-box">
-                            <div class="btn-group">
-                                <h3>Sintoma</h3>
-                                <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
-                                <p>
-                                    <select name=sintoma8>
-                                        <option value=""></option>
-                                        <?php
-                                        $resultado8 = mysql_query("Select * from sintoma") or die("Não é possível consultar sintomas.");
-                                        while ($linha8 = mysql_fetch_array($resultado8)) {
-                                            $CodigoS8 = $linha8["codigo"];
-                                            $NomeS8 = $linha8["nome"];
-                                            print("<option value='$CodigoS8'>$NomeS8</option>");
-                                        }
-                                        ?>
-                                    </select>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                <div class="container text-center">
-                    <div class="call-to-action">
-                        <br>
-                        <br>
-                        <br>
-                        <input type= "submit" value="Verificar!" href="#portfolio" class="btn btn-primary btn-xl tada"> 
-                    </div>
-                </div>
-            </div>
-                 </form>
-        </section>
 
         <section class="bg-primary" id="doencas">
             <div class="container">
@@ -380,11 +384,10 @@
                         <p class="text-faded">Veja aqui o diagnóstico aproximado baseado em seus sintomas!</p>
                         <br>
                         <h2>
-                        <?php
-                            
-                            
+                            <?php
+                            $sint_combo1 = "";
                             $doenca_principal = "Insira os sintomas para pesquisarmos!";
-                            $doenca1 = mysql_query("SELECT * FROM doenca") or die ("Não é possível consultar sintomas.");
+                            $doenca1 = mysql_query("SELECT * FROM doenca") or die("Não é possível consultar sintomas.");
                             while ($linhaDoenca = mysql_fetch_array($doenca1)) {
                                 $sint_combo1 = $_GET['sintoma1'];
                                 $doenca_sintoma1 = $linhaDoenca ["sintoma_1"];
@@ -392,116 +395,20 @@
                                     $doenca_principal = $linhaDoenca ["nome"];
                                 }
                             }
-                        
+
                             //Imprime o nome da doença.
                             echo $doenca_principal;
-                        ?>
+                            ?>
+
                         </h2>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!--
-        <section class="no-padding" id="portfolio">
-            <div class="container-fluid">
-                <div class="row no-gutter">
-                    <div class="col-lg-4 col-sm-6">
-                        <a href="#" class="portfolio-box">
-                            <img src="img/portfolio/1.jpg" class="img-responsive" alt="">
-                            <div class="portfolio-box-caption">
-                                <div class="portfolio-box-caption-content">
-                                    <div class="project-category text-faded">
-                                        Category
-                                    </div>
-                                    <div class="project-name">
-                                        Project Name
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <a href="#" class="portfolio-box">
-                            <img src="img/portfolio/2.jpg" class="img-responsive" alt="">
-                            <div class="portfolio-box-caption">
-                                <div class="portfolio-box-caption-content">
-                                    <div class="project-category text-faded">
-                                        Category
-                                    </div>
-                                    <div class="project-name">
-                                        Project Name
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <a href="#" class="portfolio-box">
-                            <img src="img/portfolio/3.jpg" class="img-responsive" alt="">
-                            <div class="portfolio-box-caption">
-                                <div class="portfolio-box-caption-content">
-                                    <div class="project-category text-faded">
-                                        Category
-                                    </div>
-                                    <div class="project-name">
-                                        Project Name
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <a href="#" class="portfolio-box">
-                            <img src="img/portfolio/4.jpg" class="img-responsive" alt="">
-                            <div class="portfolio-box-caption">
-                                <div class="portfolio-box-caption-content">
-                                    <div class="project-category text-faded">
-                                        Category
-                                    </div>
-                                    <div class="project-name">
-                                        Project Name
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <a href="#" class="portfolio-box">
-                            <img src="img/portfolio/5.jpg" class="img-responsive" alt="">
-                            <div class="portfolio-box-caption">
-                                <div class="portfolio-box-caption-content">
-                                    <div class="project-category text-faded">
-                                        Category
-                                    </div>
-                                    <div class="project-name">
-                                        Project Name
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <a href="#" class="portfolio-box">
-                            <img src="img/portfolio/6.jpg" class="img-responsive" alt="">
-                            <div class="portfolio-box-caption">
-                                <div class="portfolio-box-caption-content">
-                                    <div class="project-category text-faded">
-                                        Category
-                                    </div>
-                                    <div class="project-name">
-                                        Project Name
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        -->
+
         <section class="bg-dark" id="incidencia">
-        
+
             <div class="container text-center">
                 <h2>Incidência de Doenças</h2>
                 <hr class="primary">
